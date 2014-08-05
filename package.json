@@ -9,7 +9,11 @@
   },
   "dependencies": {
     "express": "4.x",
-    "jade": "~1.5.0"
+    "jade": "~1.5.0",
+    "supervisor": "*"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/supervisor server.js"
   },
   "author": "Niklas and the gang",
   "license": "TBA",
