@@ -1,9 +1,13 @@
 var express = require('express');
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 
 var app = express();
 
 app.use(express.static(__dirname + '/public'));
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.set('views', __dirname + '/views');
 
@@ -22,6 +26,7 @@ app.get('/', function(req, res) {
 
 app.get('/jam', jam.index);
 app.get('/jam/create', jam.create);
+app.post('/jam/save', jam.save);
 
 app.get('/example', example.index);
 

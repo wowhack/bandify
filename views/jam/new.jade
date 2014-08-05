@@ -5,9 +5,9 @@ block content
 
   .row
     .col-md-3
-      form
+      form(method='post', action='/jam/save')
         .form-group
           label Title
-          input.form-control(type='text', placeholder='My song') 
+          input.form-control(name='title', type='text', placeholder='My song') 
 
         button.btn.btn-success Create jam
