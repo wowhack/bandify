@@ -1,10 +1,10 @@
 
 // list all existing jams?
 exports.index = function(req, res) {
-  res.send('Listing tha jams');  
+  res.render('jam/list');  
 };
 
 // return a form for creating a new jam
 exports.create = function(req, res) {
-  res.send('Amazing form');
+  res.render('jam/new');
 };

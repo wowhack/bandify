@@ -21,6 +21,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/jam', jam.index);
+app.get('/jam/create', jam.create);
 
 app.get('/example', example.index);
 
