@@ -2,7 +2,17 @@ var Track = require('../models/track.js');
 
 exports.index = function(req, res) {
   Track.find({}, function(err, docs) {
-    res.render('track/index', {tracks: docs});
+
+    if(req.user) {
+      var userTracks = [];
+
+      docs.forEach(function(track) {
+        if(track.owner == req.user.id)
+          userTracks.push(track);
+      })
+    }
+
+    res.render('track/index', {tracks: docs, userTracks: userTracks});
   });
 }
 
@@ -12,12 +22,13 @@ exports.create = function(req, res) {
 
 exports.save = function(req, res) {
 
-  var newTitle = new Track({
+  var newTrack = new Track({
+    owner: req.user.id,
     title: req.body.title,
     recordingId: app.get('r_id')
   });
 
-  newTitle.save(function(err, product) {
+  newTrack.save(function(err, product) {
 
     if (err) {
       console.error(err);

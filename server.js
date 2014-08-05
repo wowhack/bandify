@@ -37,6 +37,12 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
+// Always pass user session object if available (equals to logged in)
+app.use(function(req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
+
 
 // routes/controllers
 var example = require('./controllers/example');
@@ -79,6 +85,7 @@ app.get('/jam/:id', jam.show);
 app.get('/jam/delete/:id', jam.delete);
 app.get('/jam/search/:id', jam.searchSingleJam);
 app.get('/jam/search/jams/:id', jam.searchMultipleJams);
+app.post('/jam/addTrack', jam.addTrack);
 
 app.get('/tracks', track.index)
 app.get('/tracks/create', auth.isLoggedIn, track.create);

@@ -10,16 +10,17 @@ block content
 
 
 
-    .col-md-8
-      h1 Listing the jams
-      ul.jam-list
-        for jam in jams
-          li.jam-list-item
-            p
-              =jam.title
-            a.btn.btn-default(href='/jam/' +  (jam._id)) View Jam
-            a.btn.btn-danger(href='/jam/delete/' + (jam._id)) Delete
-  
-
-  script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
+    .col-md-9
+      if (jams != null && jams.length != 0)
+        h1 Listing the jams
+        ul.jam-list
+          for jam in jams
+            li.jam-list-item
+              p
+                =jam.title
+              a.btn.btn-default(href='/jam/' +  (jam._id)) View Jam
+              a.btn.btn-danger(href='/jam/delete/' + (jam._id)) Delete
+      else
+        h1 There are no jams :(((
   script(src="/list-jam.js")
+  

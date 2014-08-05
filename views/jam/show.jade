@@ -1,15 +1,32 @@
 extends ../layout
 
-block content
-  h1=jam.title
-  p
-    =jam.desc
-  p
-    =jam.spotifyId
-  p
-    =user.username
-  a(href='/jam/delete/' + (jam._id)) delete
-  
-  button#play-jam.btn.btn-primary Play jam
+block content  
+  .row
+    .col-md-12
+      h1=jam.title
+      p
+        =jam.desc
+      p
+        =jam.spotifyId
 
+  .row
+    .col-md-8
+      h2 Active tracks
+      ul.list-group
+        for track in jam.tracks
+          li.list-group-item
+            = track.title
+
+
+      button#play-jam.btn.btn-primary Play jam
+    .col-md-4
+      h2 Available Tracks
+
+      ul#available-tracks.list-group
+        for track in tracks
+          li.list-group-item
+            =track.title
+            a(href="#" data-id=track.id)
+              span.glyphicon.glyphicon-plus.pull-right
+      a.btn.btn-primary(href="/tracks/create") Add new track
   script(src='/show-jam.js')
