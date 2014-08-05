@@ -2,7 +2,17 @@ var Track = require('../models/track.js');
 
 exports.index = function(req, res) {
   Track.find({}, function(err, docs) {
-    res.render('track/index', {tracks: docs});
+
+    if(req.user) {
+      var userTracks = [];
+
+      docs.forEach(function(track) {
+        if(track.owner == req.user.id)
+          userTracks.push(track);
+      })
+    }
+
+    res.render('track/index', {tracks: docs, userTracks: userTracks});
   });
 }
 
