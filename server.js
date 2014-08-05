@@ -1,11 +1,7 @@
 var express = require('express');
-
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/bandify');
-
 var app = express();
-var example = require('./controllers/example');
 
 app.use(express.static(__dirname + '/public'));
 
@@ -13,9 +9,18 @@ app.set('views', __dirname + '/views');
 
 app.set('view engine', 'jade');
 
+// moongoose stuff
+mongoose.connect('mongodb://localhost/bandify');
+
+// routes/controllers
+var example = require('./controllers/example');
+var jam = require('./controllers/jam');
+
 app.get('/', function(req, res) {
   res.render('hello');
 });
+
+app.get('/jam', jam.index);
 
 app.get('/example', example.index);
 
