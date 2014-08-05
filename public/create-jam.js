@@ -1,28 +1,26 @@
 ;(function($) {
 
-  $('#musixmatch-btn').click(showMusixMatchModal);
+  $('#musixmatch-modal-btn').click(showMusixMatchModal);
 
-  $('#song-title').change(function(e) {
+  $('#find-songs').click(function(e) {
     e.preventDefault();
 
-    var songTitle = $(this).val(); 
-    $.get('/musixmatch/' + songTitle, addAlternativesToModal);
+    var songTitle = $('#song-title').val();
+    var songArtist = $('#song-artist').val();
+
+    $.get('/musixmatch/' + songArtist + '/' + songArtist, addLyricsToModal);
   });
 
   // listen for changes in song title input
-  function addAlternativesToModal(data) {
-    if ( !data.songs ) return;
+  function addLyricsToModal(data) {
+    if ( !data.lyrics ) return;
 
-    var source   = $("#song-alternative").html();
+    var source   = $("#song-lyrics").html();
     var template = Handlebars.compile(source);
 
     // go through the songs
-    var songs = data.songs;
-
-    songs.forEach(function(song) {
-      var html = template(song);
-      $('#song-alternatives').append( html ); 
-    });
+    var html = template( data );
+    $('#results').html( html ); 
 
   }
 
