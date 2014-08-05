@@ -1,7 +1,10 @@
+var Jam = require('../models/jam');
 
 // list all existing jams?
 exports.index = function(req, res) {
-  res.render('jam/list');  
+  Jam.find({}, function(err, jams) {
+    res.render('jam/list', { jams: jams });  
+  });
 };
 
 // return a form for creating a new jam
@@ -16,6 +19,9 @@ exports.create = function(req, res) {
 // we create a jam with the title, then redirect to jam specific route
 
 exports.save = function(req, res) {
-  console.log('Saving stuff moon', req.params);
-  console.log('Tha body', req.body);
+  var newJam = new Jam({ title: req.body.title });
+
+  newJam.save(function(err, jam) {
+    res.redirect('/jam');
+  });
 };
