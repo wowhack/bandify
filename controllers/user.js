@@ -16,9 +16,17 @@ exports.show = function(req, res) {
   res.render('user/index', {
     user : req.user // get the user out of session and pass to template
   });
-}
+};
 
 exports.logout = function(req, res) {
   req.logout();
   res.redirect('/');
+};
+
+exports.search = function(req, res) {
+  var userID = req.params.id;
+
+  User.findById(userID, function(err, user) {
+    res.json({ user: user });
+  });
 }

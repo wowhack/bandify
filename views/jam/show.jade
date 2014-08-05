@@ -6,3 +6,10 @@ block content
     =jam.desc
   p
     =jam.spotifyId
+  p
+    =user.username
+  a(href='/jam/delete/' + (jam._id)) delete
+  
+  button#play-jam.btn.btn-primary Play jam
+
+  script(src='/show-jam.js')
