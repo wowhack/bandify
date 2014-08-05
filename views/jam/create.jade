@@ -8,10 +8,27 @@ block content
       form(method='post', action='/jam/save')
         .form-group
           label Title
-          input.form-control(name='title', type='text', placeholder='My song') 
+          input.form-control(name='title', type='text', placeholder='My song')
+
+        .form-group
+          label Spotify-song
+          input.form-control(id='spotify-id-field', name='spotify', type='text', readonly="readonly" placeholder='Spotify-id')
+          p(id='spotify-song-name') 
 
         .form-group
           label Description
           textarea.form-control(name='desc', rows='3')
 
         button.btn.btn-success Create jam
+
+    .col-md-4
+      label Search Spotify song
+      input.form-control(id='trackName', name='title', type='text', placeholder='Name')
+
+      button(data-name='create-search') Search songs
+
+      ul(id='search-results')
+
+  script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
+  script(src="/spotify-web-api.js")
+  script(src="/spotifysearch.js")

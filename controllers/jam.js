@@ -25,7 +25,8 @@ exports.show = function(req, res) {
 exports.save = function(req, res) {
   var newJam = new Jam({ 
     title: req.body.title,
-    desc: req.body.desc
+    desc: req.body.desc,
+    spotifyId: req.body.spotify
   });
 
   newJam.save(function(err, jam) {
