@@ -1,10 +1,13 @@
 extends ../layout
 
 block content
-  h1 Listing the jams
-    ul.jam-list
-    for jam in jams
-      li.jam-list-item
-        a(href='/jam/' +  (jam._id))
-          =jam.title
-        a.btn.btn-danger(href='/jam/delete/' + (jam._id)) Delete
+  if (jams != null && jams.length != 0)
+    h1 Listing the jams
+      ul.jam-list
+      for jam in jams
+        li.jam-list-item
+          a(href='/jam/' +  (jam._id))
+            =jam.title
+          a.btn.btn-danger(href='/jam/delete/' + (jam._id)) Delete
+  else
+    h1 There are no jams :(((
