@@ -6,17 +6,20 @@ block content
 
   .row
     .col-md-3
-        label Title
+        label Spotify Title
         input.form-control(id='trackName', name='title', type='text', placeholder='Name') 
 
         button(data-name='jam-search') Search songs
+
+    .col-md-4
+      label Jams
+      ul(id='jam-results')
 
   .row
     .col-md-3
       ul(id='search-results')
 
-    .col-md-4
-      ul(id='jam-results')
+
 
   script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
   script(src="/spotify-web-api.js")

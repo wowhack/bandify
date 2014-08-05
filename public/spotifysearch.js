@@ -7,7 +7,7 @@ function searchTrack (trackName, viewname) {
 	else console.log('Tracks', data);
 	if (viewname == 'search')
 	data.tracks.items.forEach(function(track) {
-		$("#search-results").append('<li>' + track.name + '<button data-name="find-jam" id="' + track.id + '">Find Jam</button></li>')
+		$("#search-results").append('<li>' + track.name + '<button data-name="find-jam" id="' + track.id + '">Find Jams</button></li>')
 	});
 	if (viewname == 'create')
 	data.tracks.items.forEach(function(track) {
@@ -16,9 +16,10 @@ function searchTrack (trackName, viewname) {
   });
 }
 
+
 $(document).on('click', 'button', function(evt) {
   if($(evt.target).data('name') == 'jam-search') {
-	searchTrack(document.getElementById('trackName').value, 'search')
+	searchTrack(document.getElementById('trackName').value, 'search');
   }
   if($(evt.target).data('name') == 'find-jam') {
   	$.get(
@@ -29,7 +30,7 @@ $(document).on('click', 'button', function(evt) {
   		});
   }
   if($(evt.target).data('name') == 'create-search') {
-  	searchTrack(document.getElementById('trackName').value, 'create')
+  	searchTrack(document.getElementById('trackName').value, 'create');
   }
   if($(evt.target).data('name') == 'add-song-id') {
   	$("#spotify-id-field").val(this.id);
