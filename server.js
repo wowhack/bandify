@@ -44,11 +44,9 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
-app.get('/login', user.login);
 app.get('/signup', user.signup);
+app.get('/login', user.login);
 app.get('/logout', user.logout);
-
-app.get('/user', auth.isLoggedIn, user.show);
 
 // process the signup form
 app.post('/signup', passport.authenticate('local-signup', {
@@ -63,6 +61,8 @@ app.post('/login', passport.authenticate('local-login', {
 	failureRedirect : '/login', // redirect back to the signup page if there is an error
 	failureFlash : true // allow flash messages
 }));
+
+app.get('/user', auth.isLoggedIn, user.show);
 
 app.get('/jam', auth.isLoggedIn, jam.index);
 app.get('/jam/create', jam.create);
