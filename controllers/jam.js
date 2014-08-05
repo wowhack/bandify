@@ -9,7 +9,7 @@ exports.index = function(req, res) {
 
 // return a form for creating a new jam
 exports.create = function(req, res) {
-  res.render('jam/new');
+  res.render('jam/create');
 };
 
 //
@@ -23,7 +23,10 @@ exports.show = function(req, res) {
 
 // we create a jam with the title, then redirect to jam specific route
 exports.save = function(req, res) {
-  var newJam = new Jam({ title: req.body.title });
+  var newJam = new Jam({ 
+    title: req.body.title,
+    desc: req.body.desc
+  });
 
   newJam.save(function(err, jam) {
     res.redirect('/jam');

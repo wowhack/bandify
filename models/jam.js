@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 
 var JamSchema = new Schema({
   title:  String,
+  desc: { type: String, default: '' },
   owner:  {type: Schema.ObjectId, ref: 'User'},
   spotifyId:  String,
   password:  String,
