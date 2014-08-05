@@ -45,6 +45,6 @@ app.post('/tracks/save', track.save);
 app.get('/tracks/:id', track.show)
 app.get('/example', example.index);
 
-app.get('/musixmatch/:song', musixmatch.findSongs);
+app.get('/musixmatch/:artist/:title', musixmatch.findSongs);
 
 app.listen(3000);
