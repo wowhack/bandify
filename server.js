@@ -3,6 +3,8 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
 var app = express();
+var example = require('./controllers/example');
+var user = require('./controllers/user');
 
 app.use(express.static(__dirname + '/public'));
 
@@ -29,7 +31,7 @@ app.get('/jam/create', jam.create);
 app.post('/jam/save', jam.save);
 
 app.get('/example', example.index);
-
+app.get('/user', user.index)
 
 
 app.listen(3000);
