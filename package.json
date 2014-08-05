@@ -14,7 +14,7 @@
     "mongoose": "3.*",
     "lodash": "2.4.1 ",
     "body-parser": "*",
-
+    "async": "latest",
     "raw-body": "*",
     "media-typer": "*",
     "binaryjs": "*",

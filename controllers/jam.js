@@ -1,5 +1,8 @@
 var Jam = require('../models/jam');
 var User = require('../models/user');
+var Track = require('../models/track');
+var async = require('async');
+var _ = require('lodash');
 
 // list all existing jams?
 exports.index = function(req, res) {
@@ -17,13 +20,22 @@ exports.create = function(req, res) {
 exports.show = function(req, res) {
   var jamID = req.params.id;
 
-  Jam.findById(jamID, function(err, jam) {
-    User.findById(jam.owner, function(err, user) {
-      var user = user;
-      res.render('jam/show', { jam: jam, user: user })
+  async.parallel([
+    function(cb) {
+      Jam.findById(jamID).populate('tracks').exec(cb);
+    },
+    function(cb) {
+      Track.find({}, cb);
+    },
+  ], function(err, results) {
+    console.log(results);
+    res.render('jam/show', {
+      jam: results[0],
+      tracks: results[1]
     });
-     
+
   });
+
 };
 
 exports.delete = function(req, res) {
@@ -59,5 +71,11 @@ exports.search = function(req, res) {
 exports.searchResult = function(req, res) {
   Jam.find({spotifyId: req.params.id }, function(err, jams) {
     res.json({ jams: jams });
+  });
+}
+
+exports.addTrack = function(req, res) {
+  Jam.update({_id: req.body.jamId}, {$push: {tracks: req.body.trackId}}, function(err, s) {
+    if(err) console.error(err)
   });
 }

@@ -83,6 +83,7 @@ app.get('/jam/search', jam.search);
 app.get('/jam/:id', jam.show);
 app.get('/jam/delete/:id', jam.delete);
 app.get('/jam/search/:id', jam.searchResult);
+app.post('/jam/addTrack', jam.addTrack);
 
 app.get('/tracks', track.index)
 app.get('/tracks/create', auth.isLoggedIn, track.create);
