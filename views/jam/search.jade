@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+  h1 Listing
+
+
+  .row
+    .col-md-3
+        label Title
+        input.form-control(id='trackName', name='title', type='text', placeholder='Name') 
+
+        button(data-name='search') Search songs
+
+  .row
+    .col-md-3
+      ul(id='search-results')
+
+  script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
+  script(src="/spotify-web-api.js")
+  script(src="/spotifysearch.js")
+
+

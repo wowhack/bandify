@@ -29,3 +29,15 @@ exports.save = function(req, res) {
     res.redirect('/jam');
   });
 };
+
+// search for a file with a spotify song
+exports.search = function(req, res) {
+  res.render('jam/search');
+};
+
+// return search results for a given spotify id
+exports.searchResult = function(req, res) {
+  Jam.find({spotifyId: req.params.id }, function(err, jams) {
+    res.json({ jams: jams });
+  });
+}
