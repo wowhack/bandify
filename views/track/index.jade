@@ -1,0 +1,8 @@
+extend ../layout
+
+block content
+  ul
+  for track in tracks
+    li
+      a(href="/tracks/" + (track._id))
+        =track.title

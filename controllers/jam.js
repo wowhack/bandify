@@ -5,7 +5,6 @@ exports.index = function(req, res) {
   Jam.find({}, function(err, jams) {
     res.render('jam/list', { jams: jams });  
   });
-};
 
 // return a form for creating a new jam
 exports.create = function(req, res) {
@@ -24,4 +23,3 @@ exports.save = function(req, res) {
   newJam.save(function(err, jam) {
     res.redirect('/jam');
   });
-};
