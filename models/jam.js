@@ -7,7 +7,7 @@ var JamSchema = new Schema({
   owner:  {type: Schema.ObjectId, ref: 'User'},
   spotifyId:  String,
   password:  String,
-  tracks:  [{type: Schema.ObjectId, ref 'Track'}]
+  tracks:  [{type: Schema.ObjectId, ref: 'Track'}]
 });
 
 module.exports = mongoose.model('Jam', JamSchema);
