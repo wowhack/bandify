@@ -26,7 +26,6 @@ $(document).on('click', 'button', function(evt) {
 			"search/" + this.id, function(data) {
 				console.log('data', data)
 				if(data.jams.length == 0) {
-					console.log('here', "here")
 					$("#jam-results").empty();
 					$("#jam-results").append('<p>No Jams found</p>');
 				}
