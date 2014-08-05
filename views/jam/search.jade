@@ -1,18 +1,17 @@
 extends ../layout
 
 block content
-  h1 Listing
-
 
   .row
     .col-md-3
-        label Spotify Title
-        input.form-control(id='trackName', name='title', type='text', placeholder='Name') 
+        label Search for a song on Spotify
+        input.form-control(id='trackName', name='title', type='text', placeholder='Title') 
 
-        button(data-name='jam-search') Search songs
+        button(class='btn spoti-search-btn' data-name='jam-search') Search songs
 
     .col-md-4
-      label Jams
+      label Found Jams
+
       ul(id='jam-results')
 
   .row

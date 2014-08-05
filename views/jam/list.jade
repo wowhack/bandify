@@ -2,8 +2,8 @@ extends ../layout
 
 block content
   h1 Listing the jams
-  ul
+    ul.jam-list
     for jam in jams
-      li
+      li.jam-list-item
         a(href='/jam/' +  (jam._id))
           =jam.title
