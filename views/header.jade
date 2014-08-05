@@ -10,15 +10,25 @@
       a.navbar-brand(href='/') Bandify
     .navbar-collapse.collapse
       ul.nav.navbar-nav
-        li
-          a(href='/user') Home
-        li
-          a(href='/jam/create') New jam
-        li
-          a(href='/jam') List jams
-        li
-          a(href='/jam/search') Search Spotify-Jams
-        li
-          a(href='/tracks/') Tracks
-        li
-          a(href='/tracks/create') New track
+
+        if (user != null)
+          li
+            a(href='/user') User info
+          li
+            a(href='/jam/create') New jam
+          li
+            a(href='/jam') List jams
+          li
+            a(href='/jam/search') Search Spotify-Jams
+          li
+            a(href='/tracks/') Tracks
+          li
+            a(href='/tracks/create') New track
+
+        else
+          li
+            a(href='/jam') List jams
+          li
+            a(href='/jam/search') Search Spotify-Jams
+          li
+            a(href='/tracks/') Tracks
