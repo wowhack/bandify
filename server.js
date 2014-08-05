@@ -31,7 +31,10 @@ app.get('/', function(req, res) {
 app.get('/jam', jam.index);
 app.get('/jam/create', jam.create);
 app.post('/jam/save', jam.save);
+app.get('/jam/search', jam.search);
 app.get('/jam/:id', jam.show);
+app.get('/jam/search/:id', jam.searchResult);
+
 
 
 app.get('/user', user.index)
