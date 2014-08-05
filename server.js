@@ -69,16 +69,16 @@ app.post('/login', passport.authenticate('local-login', {
 
 app.get('/user', auth.isLoggedIn, user.show);
 
-app.get('/jam', auth.isLoggedIn, jam.index);
-app.get('/jam/create', jam.create);
-app.post('/jam/save', jam.save);
+app.get('/jam', jam.index);
+app.get('/jam/create', auth.isLoggedIn, jam.create);
+app.post('/jam/save', auth.isLoggedIn, jam.save);
 app.get('/jam/search', jam.search);
 app.get('/jam/:id', jam.show);
 app.get('/jam/search/:id', jam.searchResult);
 
 app.get('/tracks', track.index)
-app.get('/tracks/create', track.create);
-app.post('/tracks/save', track.save);
+app.get('/tracks/create', auth.isLoggedIn, track.create);
+app.post('/tracks/save', auth.isLoggedIn, track.save);
 app.get('/tracks/:id', track.show)
 app.get('/example', example.index);
 
