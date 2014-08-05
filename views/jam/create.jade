@@ -11,11 +11,6 @@ block content
           input.form-control(name='title', type='text', placeholder='My song')
 
         .form-group
-          label Spotify-song
-          input.form-control(id='spotify-id-field', name='spotify', type='text', readonly="readonly" placeholder='Spotify-id')
-          p(id='spotify-song-name') 
-
-        .form-group
           label Description
           textarea.form-control(name='desc', rows='3')
 
@@ -28,11 +23,14 @@ block content
 
 
     .col-md-4
-      
+      .form-group
+        label Spotify-song
+        input.form-control(id='spotify-id-field', name='spotify', type='text', readonly="readonly" placeholder='Spotify-id')
+        p(id='spotify-song-name') 
       label Search Spotify song
-      input.form-control(id='trackName', name='title', type='text', placeholder='Name')
-      
-      button(class='btn spoti-search-btn' data-name='create-search') Search songs
+      .form-group.form-inline
+        input.form-control(id='trackName', name='title', type='text', placeholder='Name')
+        button(class='btn btn-primary spoti-search-btn' data-name='create-search') Search songs
 
       ul(id='search-results')
 
