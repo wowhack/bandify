@@ -4,4 +4,6 @@ block content
   h1 Listing the jams
   ul
     for jam in jams
-      li=jam.title
+      li
+        a(href='/jam/' +  (jam._id))
+          =jam.title

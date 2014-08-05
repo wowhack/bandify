@@ -12,9 +12,14 @@ exports.create = function(req, res) {
   res.render('jam/new');
 };
 
-// workflow
+//
+exports.show = function(req, res) {
+  var jamID = req.params.id;
 
-// user fills in jam name, presses create gets sent here
+  Jam.findById(jamID, function(err, jam) {
+    res.render('jam/show', { jam: jam }) 
+  });
+};
 
 // we create a jam with the title, then redirect to jam specific route
 exports.save = function(req, res) {
