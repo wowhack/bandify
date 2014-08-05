@@ -4,7 +4,7 @@ block content
   h1 Create jam form
 
   .row
-    .col-md-4
+    .col-md-5
       form(method='post', action='/jam/save')
         .form-group
           label Title
@@ -14,4 +14,37 @@ block content
           label Description
           textarea.form-control(name='desc', rows='3')
 
+        .form-group
+          label Lyrics <a href="#" id="musixmatch-btn">(fetch from musixmatch)</a>
+          textarea.form-control(name='lyrics', rows='3')
+
+
         button.btn.btn-success Create jam
+
+  #lyrics-modal.modal.fade
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(data-dismiss='modal', type='button')
+          h4.modal-title MusixMatch Fetcher
+        .modal-body
+          .row
+            .col-md-12
+              form.form-horizontal(onsubmit='return false')
+                .form-group
+                  label.col-sm-2.control-label Song title
+                  .col-sm-8
+                    input#song-title.form-control(placeholder='My song')
+
+          .row
+            .col-md-12
+              ul#song-alternatives
+
+        .modal-footer
+          button.btn.btn-default Close
+
+  script(src='/handlebars-v1.3.0.js')
+  script(src='/create-jam.js')
+
+  script#song-alternative(type='text/x-handlebars-template')
+    li {{title}} <a href="#" class="add-song-lyrics">Get song lyrics</a>

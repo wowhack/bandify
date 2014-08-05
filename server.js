@@ -22,6 +22,7 @@ var example = require('./controllers/example');
 var jam = require('./controllers/jam');
 var user = require('./controllers/user');
 var track = require('./controllers/track');
+var musixmatch = require('./controllers/musixmatch');
 
 app.get('/', function(req, res) {
   res.render('hello');
@@ -40,5 +41,7 @@ app.get('/tracks/create', track.create);
 app.post('/tracks/save', track.save);
 app.get('/tracks/:id', track.show)
 app.get('/example', example.index);
+
+app.get('/musixmatch/:song', musixmatch.findSongs);
 
 app.listen(3000);
