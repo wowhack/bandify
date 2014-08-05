@@ -13,15 +13,20 @@ block content
     .col-md-8
       h2 Active tracks
       ul.list-group
-        li.list-group-item Track 1
-        li.list-group-item Track 2
+        for track in jam.tracks
+          li.list-group-item
+            = track.title
+
 
       button#play-jam.btn.btn-primary Play jam
     .col-md-4
-      h1 Available Tracks
+      h2 Available Tracks
 
-      ul.list-group
-        li.list-group-item Ett
-        li.list-group-item Två
-      button.btn.btn-primary Add new track
+      ul#available-tracks.list-group
+        for track in tracks
+          li.list-group-item
+            =track.title
+            a(href="#" data-id=track.id)
+              span.glyphicon.glyphicon-plus.pull-right
+      a.btn.btn-primary(href="/tracks/create") Add new track
   script(src='/show-jam.js')

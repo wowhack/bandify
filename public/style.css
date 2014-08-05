@@ -99,7 +99,12 @@ h1, h2, h3, h4, h5 {
 .jam-list li {
 	width: 100%;
 	overflow: hidden;
-	padding: 0.5em;
+	padding: 0.2em;
+}
+
+.jam-list p {
+	font-size: 18px;
+	width: auto;
 }
 
 .jam-list li:nth-child(odd) {
