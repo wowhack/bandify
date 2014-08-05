@@ -76,33 +76,3 @@ var Track = require('./models/track.js')
 
 
 
-// Audio streaming
-binaryServer = BinaryServer({port: 9001});
-
-binaryServer.on('connection', function(client) {
-  var r_id = Math.floor(Math.random()*36000),
-      path = 'sound/demo' + r_id + '.wav';
-  
-  while(fs.existsSync(path)) {
-    r_id = Math.floor(Math.random()*36000);
-    path = 'sound/demo' + r_id + '.wav';
-  }
-
-  
-  var fileWriter = new wav.FileWriter(path, {
-    channels: 1,
-    sampleRate: 48000,
-    bitDepth: 16
-  });
-
-
-  client.on('stream', function(stream, meta) {
-    
-    stream.pipe(fileWriter);
-    
-    stream.on('end', function() {
-      fileWriter.end();
-      app.set('r_id', path);
-    });
-  });
-});
