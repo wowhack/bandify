@@ -4,10 +4,10 @@ var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
 	
-  name: String
-  spotify: String
+  name: String,
+  spotify: String,
   tracks: { type: Array, "default": [] }
 
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', UserSchema);
