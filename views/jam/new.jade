@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  h1 Create jam form
+
+  .row
+    .col-md-3
+      form(method='post', action='/jam/save')
+        .form-group
+          label Title
+          input.form-control(name='title', type='text', placeholder='My song') 
+
+        button.btn.btn-success Create jam

@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+  h2 How about creating a new track, huh?
+  .row
+    .col-md-3
+      form(method='post', action='/tracks/save')
+        .form-group
+          label(for="title") Title
+          input.form-control(type="text", placeholder="Your title", name="title", id="title")
+        .form-group
+          input.btn.btn-primary(type="submit" value="GOGOGOO")
