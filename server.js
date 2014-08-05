@@ -64,12 +64,14 @@ app.post('/login', passport.authenticate('local-login', {
 }));
 
 app.get('/user', auth.isLoggedIn, user.show);
+app.get('/user/:id', user.search);
 
 app.get('/jam', auth.isLoggedIn, jam.index);
 app.get('/jam/create', jam.create);
 app.post('/jam/save', jam.save);
 app.get('/jam/search', jam.search);
 app.get('/jam/:id', jam.show);
+app.get('/jam/delete/:id', jam.delete);
 app.get('/jam/search/:id', jam.searchResult);
 
 app.get('/tracks', track.index)
