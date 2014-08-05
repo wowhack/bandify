@@ -1,74 +1,77 @@
-(function(window) {
-  var client = new BinaryClient('ws://localhost:9001');
+if (window.location.pathname === '/tracks/create') {
 
-  client.on('open', function() {
-    window.Stream = client.createStream();
+  (function(window) {
+    var client = new BinaryClient('ws://localhost:9001');
 
-    if (!navigator.getUserMedia)
-      navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
-    navigator.mozGetUserMedia || navigator.msGetUserMedia;
+    client.on('open', function() {
+      window.Stream = client.createStream();
 
-    if (navigator.getUserMedia) {
-      navigator.getUserMedia({audio:true}, success, function(e) {
-        alert('Error capturing audio.');
-      });
-    } else alert('getUserMedia not supported in this browser.');
+      if (!navigator.getUserMedia)
+        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
+      navigator.mozGetUserMedia || navigator.msGetUserMedia;
 
-    var recording = false;
+      if (navigator.getUserMedia) {
+        navigator.getUserMedia({audio:true}, success, function(e) {
+          alert('Error capturing audio.');
+        });
+      } else alert('getUserMedia not supported in this browser.');
 
-    window.startRecording = function() {
-      recording = true;
-    }
+      var recording = false;
 
-    window.stopRecording = function() {
-      recording = false
-      window.Stream.end();
-    }
-
-    function success(e) {
-      audioContext = window.AudioContext || window.webkitAudioContext;
-      context = new audioContext();
-
-      // the sample rate is in context.sampleRate
-      audioInput = context.createMediaStreamSource(e);
-
-      var bufferSize = 2048;
-      recorder = context.createScriptProcessor(bufferSize, 1, 1);
-
-      recorder.onaudioprocess = function(e){
-        if(!recording) return;
-        console.log ('recording');
-        var left = e.inputBuffer.getChannelData(0);
-        window.Stream.write(convertoFloat32ToInt16(left));
+      window.startRecording = function() {
+        recording = true;
       }
 
-      audioInput.connect(recorder)
-      recorder.connect(context.destination); 
-    }
-
-    function convertoFloat32ToInt16(buffer) {
-      var l = buffer.length;
-      var buf = new Int16Array(l)
-
-      while (l--) {
-        buf[l] = buffer[l]*0xFFFF;    //convert to 16 bit
+      window.stopRecording = function() {
+        recording = false
+        window.Stream.end();
       }
-      return buf.buffer
-    }
-  });
-})(this);
 
-(function($) {
-  $('#track_start').on('click', function(e) {
-    e.preventDefault();
-    startRecording();
-    $('#track_stop').removeClass('disabled');
-    $('#track_start').addClass('disabled');
-  });
-  $('#track_stop').on('click', function(e) {
-    e.preventDefault();
-    stopRecording();
-    $('.record-group').fadeOut(200, function() {$('.recording-completed').fadeIn();});
-    
-  })
-})(jQuery);
+      function success(e) {
+        audioContext = window.AudioContext || window.webkitAudioContext;
+        context = new audioContext();
+
+        // the sample rate is in context.sampleRate
+        audioInput = context.createMediaStreamSource(e);
+
+        var bufferSize = 2048;
+        recorder = context.createScriptProcessor(bufferSize, 1, 1);
+
+        recorder.onaudioprocess = function(e){
+          if(!recording) return;
+          console.log ('recording');
+          var left = e.inputBuffer.getChannelData(0);
+          window.Stream.write(convertoFloat32ToInt16(left));
+        }
+
+        audioInput.connect(recorder)
+        recorder.connect(context.destination); 
+      }
+
+      function convertoFloat32ToInt16(buffer) {
+        var l = buffer.length;
+        var buf = new Int16Array(l)
+
+        while (l--) {
+          buf[l] = buffer[l]*0xFFFF;    //convert to 16 bit
+        }
+        return buf.buffer
+      }
+    });
+  })(this);
+
+  (function($) {
+    $('#track_start').on('click', function(e) {
+      e.preventDefault();
+      startRecording();
+      $('#track_stop').removeClass('disabled');
+      $('#track_start').addClass('disabled');
+    });
+    $('#track_stop').on('click', function(e) {
+      e.preventDefault();
+      stopRecording();
+      $('.record-group').fadeOut(200, function() {$('.recording-completed').fadeIn();});
+      
+    })
+  })(jQuery);
+}

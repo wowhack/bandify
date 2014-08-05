@@ -4,7 +4,6 @@ exports.index = function(req, res) {
   Track.find({}, function(err, docs) {
     res.render('track/index', {tracks: docs});
   });
-
 }
 
 exports.create = function(req, res) {
@@ -12,7 +11,6 @@ exports.create = function(req, res) {
 }
 
 exports.save = function(req, res) {
-  console.log(app.get('r_id'));
 
   var newTitle = new Track({
     title: req.body.title,
@@ -33,9 +31,4 @@ exports.show = function(req, res) {
   Track.findOne({_id:req.params.id}, function(err, doc) {
     res.render('track/show', {track:doc});
   });
-
-}
-
-exports.test = function(req, res) {
-  console.log(req.body);
 }
