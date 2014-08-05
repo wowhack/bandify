@@ -7,9 +7,6 @@ var BinaryServer = require('binaryjs').BinaryServer;
 var fs = require('fs');
 var wav = require('wav');
 
-<<<<<<< HEAD
-app = express();
-=======
 // Session and auth
 var passport = require('passport');
 var cookieParser = require('cookie-parser');
@@ -17,8 +14,8 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var auth = require('./controllers/auth');
 
-var app = express();
->>>>>>> 748e23574d471c4018cac700bdf752803934ca82
+app = express();
+
 
 app.use(express.static(__dirname + '/public'));
 
@@ -84,43 +81,6 @@ app.get('/tracks/create', track.create);
 app.post('/tracks/save', track.save);
 app.get('/tracks/:id', track.show)
 app.get('/example', example.index);
-
-
-app.listen(3000);
-
-var Track = require('./models/track.js')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 app.get('/musixmatch/:artist/:title', musixmatch.findSongs);
 
