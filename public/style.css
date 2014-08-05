@@ -2,6 +2,55 @@
 /* Global
 ------------------------------------------------------------- */
 
+/*
+ * orange: #EB540A
+ * dark orange: #bc451a
+ *
+ */
+
+/* General */
+
+p, label {
+	color: #bc451a;
+}
+
+h1, h2, h3, h4, h5 {
+	color: #E68757;
+
+}
+
+.navbar {
+	background: #EB540A;
+}
+
+.nav.navbar-nav > li > a {
+	color: white;
+	background: #E04B15;
+}
+
+.nav.navbar-nav > li {
+	border-right: 1px #EB540A solid;
+}
+
+.nav.navbar-nav > li:last-child {
+	border-right: none;
+}
+
+.nav.navbar-nav > li > a:hover {
+	background: #D44815;
+	color: white;
+}
+
+.navbar-header .navbar-brand {
+	letter-spacing: 0.3em;
+	font-size: 200%;
+	color: white;
+}
+
+.navbar-header .navbar-brand:hover {
+	background: #D43D06;
+	color: white;
+}
 
 /* Button */
 
