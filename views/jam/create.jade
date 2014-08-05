@@ -4,10 +4,14 @@ block content
   h1 Create jam form
 
   .row
-    .col-md-3
+    .col-md-4
       form(method='post', action='/jam/save')
         .form-group
           label Title
           input.form-control(name='title', type='text', placeholder='My song') 
+
+        .form-group
+          label Description
+          textarea.form-control(name='desc', rows='3')
 
         button.btn.btn-success Create jam
