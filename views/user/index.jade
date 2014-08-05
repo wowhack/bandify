@@ -1,4 +1,15 @@
 extends ../layout
 
 block content
-  h1 User jaoo!
+  h1 User info
+
+  h2 Username
+  p
+    =user.username
+
+  h2 password
+  p
+    =user.password
+
+  h3
+    a(href="/logout") Logout

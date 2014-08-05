@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+
+  .row
+    .col-md-3
+        label Search for a song on Spotify
+        input.form-control(id='trackName', name='title', type='text', placeholder='Title') 
+
+        button(class='btn spoti-search-btn' data-name='jam-search') Search songs
+
+    .col-md-4
+      label Found Jams
+
+      ul(id='jam-results')
+
+  .row
+    .col-md-3
+      ul(id='search-results')
+
+
+
+  script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
+  script(src="/spotify-web-api.js")
+  script(src="/spotifysearch.js")
+
+

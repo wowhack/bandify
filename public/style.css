@@ -1,0 +1,68 @@
+
+/* Global
+------------------------------------------------------------- */
+
+
+/* Button */
+
+.spoti-search-btn {
+	margin: 0.5em;
+}
+
+
+/* Lists */
+
+#search-results li:nth-child(odd) {
+	background: #EEEEEE;
+	width: 100%;
+	overflow: hidden;
+	padding: 0.5em;
+}
+
+#search-results li:nth-child(even) {
+	background: white;
+	width: 100%;
+	overflow: hidden;
+	padding: 0.5em;
+}
+
+#search-results li button {
+	float: right;
+	background: white;
+	color: #EB540A;
+	border: 1px solid #EB540A;
+}
+
+#search-results li button:hover {
+	box-shadow: 0px 0px 9px 2px #EB540A;
+}
+
+.track-name {
+	float: left;
+	font-size: 14px;
+}
+
+.track-artist {
+	float: left;
+	font-size: 14px;
+}
+
+.jam-list li {
+	width: 100%;
+	overflow: hidden;
+	padding: 0.5em;
+}
+
+.jam-list li:nth-child(odd) {
+	background: #EEEEEE;
+	
+}
+
+.jam-list li:nth-child(even) {
+	background: white;
+}
+
+
+.jam-list li:hover {
+	background: #EB540A;
+}

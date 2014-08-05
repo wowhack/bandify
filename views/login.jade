@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h1 Login here bro'!
+
+  if (message.length > 0)
+    div
+      p
+        =message
+      
+      
+  .row
+    .col-md-3
+      form(method='post', action='/login')
+        .form-group
+          label(for="username") Username
+          input.form-control(type="text", placeholder="Username", name="username", id="username")
+        .form-group
+          label(for="username") Password
+          input.form-control(type="text", placeholder="Password", name="password", id="password")
+        .form-group
+          input.btn.btn-primary(type="submit" value="Login")
+
+  .row
+    .col-md-3
+      h2 need an account?
+      p
+        a(href="/signup") Signup
+      p
+        | Or go 
+        a(href="/") home
