@@ -1,4 +1,13 @@
 extends ../layout
 
 block content
-  h1 Jam form
+  h1 Create jam form
+
+  .row
+    .col-md-3
+      form
+        .form-group
+          label Title
+          input.form-control(type='text', placeholder='My song') 
+
+        button.btn.btn-success Create jam
