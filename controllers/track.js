@@ -12,12 +12,13 @@ exports.create = function(req, res) {
 
 exports.save = function(req, res) {
 
-  var newTitle = new Track({
+  var newTrack = new Track({
+    owner: req.user.id,
     title: req.body.title,
     recordingId: app.get('r_id')
   });
 
-  newTitle.save(function(err, product) {
+  newTrack.save(function(err, product) {
 
     if (err) {
       console.error(err);
