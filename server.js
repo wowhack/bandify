@@ -7,7 +7,7 @@ var BinaryServer = require('binaryjs').BinaryServer;
 var fs = require('fs');
 var wav = require('wav');
 
-var app = express();
+app = express();
 
 app.use(express.static(__dirname + '/public'));
 
@@ -16,9 +16,6 @@ app.use(bodyParser.json());
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
-
-
-
 
 // moongoose stuff
 mongoose.connect('mongodb://localhost/bandify');
@@ -46,16 +43,27 @@ app.get('/example', example.index);
 
 app.listen(3000);
 
+var Track = require('./models/track.js')
 
 // Audio streaming
 binaryServer = BinaryServer({port: 9001});
 
 binaryServer.on('connection', function(client) {
-  var fileWriter = new wav.FileWriter('sound/demo' + Math.floor((Math.random() * 100000)) + '.wav', {
+  var r_id = Math.floor(Math.random()*36000),
+      path = 'sound/demo' + r_id + '.wav';
+  
+  while(fs.existsSync(path)) {
+    r_id = Math.floor(Math.random()*36000);
+    path = 'sound/demo' + r_id + '.wav';
+  }
+
+  
+  var fileWriter = new wav.FileWriter(path, {
     channels: 1,
     sampleRate: 48000,
     bitDepth: 16
   });
+
 
   client.on('stream', function(stream, meta) {
     
@@ -63,6 +71,7 @@ binaryServer.on('connection', function(client) {
     
     stream.on('end', function() {
       fileWriter.end();
+      app.set('r_id', path);
     });
   });
 });

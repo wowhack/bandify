@@ -12,8 +12,12 @@ exports.create = function(req, res) {
 }
 
 exports.save = function(req, res) {
+  console.log(app.get('r_id'));
 
-  var newTitle = new Track({title: req.body.title});
+  var newTitle = new Track({
+    title: req.body.title,
+    recordingId: app.get('r_id')
+  });
 
   newTitle.save(function(err, product) {
 
