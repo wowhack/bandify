@@ -74,9 +74,11 @@ app.get('/jam', jam.index);
 app.get('/jam/create', auth.isLoggedIn, jam.create);
 app.post('/jam/save', auth.isLoggedIn, jam.save);
 app.get('/jam/search', jam.search);
+app.get('/jam/getall', jam.getAll);
 app.get('/jam/:id', jam.show);
 app.get('/jam/delete/:id', jam.delete);
-app.get('/jam/search/:id', jam.searchResult);
+app.get('/jam/search/:id', jam.searchSingleJam);
+app.get('/jam/search/jams/:id', jam.searchMultipleJams);
 
 app.get('/tracks', track.index)
 app.get('/tracks/create', auth.isLoggedIn, track.create);

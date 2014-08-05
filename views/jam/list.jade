@@ -1,10 +1,25 @@
 extends ../layout
 
 block content
-  h1 Listing the jams
-    ul.jam-list
-    for jam in jams
-      li.jam-list-item
-        a(href='/jam/' +  (jam._id))
-          =jam.title
-        a.btn.btn-danger(href='/jam/delete/' + (jam._id)) Delete
+  .row
+    .col-md-3
+        label Search for jams
+        input(id='jam-search-field' name='search', type='text', placeholder='Jam name')
+
+        button.btn.btn-default(data-name='jam-search') Search
+
+
+
+    .col-md-8
+      h1 Listing the jams
+      ul.jam-list
+        for jam in jams
+          li.jam-list-item
+            p
+              =jam.title
+            a.btn.btn-default(href='/jam/' +  (jam._id)) View Jam
+            a.btn.btn-danger(href='/jam/delete/' + (jam._id)) Delete
+  
+
+  script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
+  script(src="/list-jam.js")

@@ -56,8 +56,21 @@ exports.search = function(req, res) {
 };
 
 // return search results for a given spotify id
-exports.searchResult = function(req, res) {
+exports.searchSingleJam = function(req, res) {
   Jam.find({spotifyId: req.params.id }, function(err, jams) {
     res.json({ jams: jams });
+  });
+}
+
+exports.searchMultipleJams = function(req, res) {
+    var re = new RegExp(req.params.id, 'i');
+    Jam.find({title: { $regex: re }}, function(err, jams) {
+      res.json({ jams: jams });
+    });
+}
+
+exports.getAll = function(req, res) {
+  Jam.find({}, function(err, jams) {
+    res.json({ jams: jams });  
   });
 }
