@@ -22,7 +22,11 @@ $(document).on('click', 'button', function(evt) {
   }
   if($(evt.target).data('name') == 'find-jam') {
   	$.get(
-  		"search/" + this.id)
+  		"search/" + this.id, function(data) {
+  			data.jams.forEach(function(jam) {
+  				$("#jam-results").append('<li><a href="/jam/' + jam._id + '">' + jam.title + '</a></li>')
+  			});
+  		});
   }
   if($(evt.target).data('name') == 'create-search') {
   	searchTrack(document.getElementById('trackName').value, 'create')
