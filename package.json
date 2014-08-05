@@ -15,7 +15,9 @@
     "lodash": "2.4.1 ",
     "body-parser": "*",
     "raw-body": "*",
-    "media-typer": "*"
+    "media-typer": "*",
+    "binaryjs": "*",
+    "wav": "latest"
   },
   "scripts": {
     "start": "./node_modules/.bin/supervisor server.js"

@@ -9,11 +9,8 @@ block content
           label(for="title") Title
           input.form-control(type="text", placeholder="Your title", name="title", id="title")
         .form-group
-          #record
-            video#live_video(width="320",height="240" autoplay muted)
-            button#start-recording Record
-            button#stop-recording Stop
-            #uploading(hidden="true")
-              The video is converting and uploading
+          .btn-group
+            button#track_start.btn.btn-success(onclick="startRecording()") Start Recording
+            button#track_stop.btn.btn-danger(onclick="stopRecording()") Stop Recording
         .form-group
           input.btn.btn-primary(type="submit" value="GOGOGOO")
