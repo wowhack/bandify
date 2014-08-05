@@ -9,9 +9,11 @@ block content
           label(for="title") Title
           input.form-control(type="text", placeholder="Your title", name="title", id="title")
         .form-group
-          label(for="sound") sound
-          audio(controls autoplay)
-          input.form-control(type="file", accept="audio/*;capture=microphone")
+          #record
+            video#live_video(width="320",height="240" autoplay muted)
+            button#start-recording Record
+            button#stop-recording Stop
+            #uploading(hidden="true")
+              The video is converting and uploading
         .form-group
           input.btn.btn-primary(type="submit" value="GOGOGOO")
-

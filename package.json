@@ -13,7 +13,9 @@
     "supervisor": "*",
     "mongoose": "3.*",
     "lodash": "2.4.1 ",
-    "body-parser": "*"
+    "body-parser": "*",
+    "raw-body": "*",
+    "media-typer": "*"
   },
   "scripts": {
     "start": "./node_modules/.bin/supervisor server.js"

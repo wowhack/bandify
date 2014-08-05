@@ -31,3 +31,7 @@ exports.show = function(req, res) {
   });
 
 }
+
+exports.test = function(req, res) {
+  console.log(req.body);
+}
