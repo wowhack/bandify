@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/wowhack/bandify/issues"
   },
-  "homepage": "https://github.com/wowhack/bandify"
+  "homepage": "https://github.com/wowhack/bandify",
+  "devDependencies": {
+    "gulp": "~3.8.7"
+  }
 }
