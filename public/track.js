@@ -61,10 +61,14 @@
 (function($) {
   $('#track_start').on('click', function(e) {
     e.preventDefault();
-    console.log(e);
+    startRecording();
+    $('#track_stop').removeClass('disabled');
+    $('#track_start').addClass('disabled');
   });
   $('#track_stop').on('click', function(e) {
     e.preventDefault();
-    console.log(e);
+    stopRecording();
+    $('.record-group').fadeOut(200, function() {$('.recording-completed').fadeIn();});
+    
   })
 })(jQuery);
