@@ -100,6 +100,7 @@ app.get('/musixmatch/:artist/:title', musixmatch.findSongs);
 app.get('/band', band.index);
 app.get('/band/create', auth.isLoggedIn, band.create);
 app.post('/band/save', auth.isLoggedIn, band.save);
+app.get('/band/user/:id', band.getUserBand);
 app.get('/band/delete/:id', band.delete);
 app.put('/band/:id/addmember/:name', band.addOneMember);
 app.get('/band/:id', band.show);

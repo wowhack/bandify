@@ -12,7 +12,6 @@ exports.create = function(req, res) {
 };
 
 exports.save = function(req, res) {
-  console.log('req', req);
   var newBand = new Band({ 
     name: req.body.name,
     desc: req.body.desc,
@@ -46,10 +45,15 @@ exports.getAll = function(req, res) {
 }
 
 exports.addOneMember = function(req, res) {
-	console.log('params', req.params)
 	Band.update({_id: req.params.id}, {$push: {members: req.params.name}}, {upsert: false}, function(err, model) {
 		res.render('band/show', {band: req.params.id});
 	});
 	res.render('band/show', {band: req.params.id});
 	
+}
+
+exports.getUserBand = function(req, res) {
+  Band.find({owner: req.params.id}, function(err, bands) {
+    res.json({ bands: bands });
+  })
 }

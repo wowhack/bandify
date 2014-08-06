@@ -30,5 +30,4 @@
     $('#lyrics-modal').modal();
   }
 
-
 })(jQuery);
