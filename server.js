@@ -75,6 +75,7 @@ app.post('/login', passport.authenticate('local-login', {
 }));
 
 app.get('/user', auth.isLoggedIn, user.show);
+app.get('/user/username/:id', user.searchUsername);
 app.get('/user/:id', user.search);
 
 app.get('/jam', jam.index);
@@ -100,6 +101,7 @@ app.get('/band', band.index);
 app.get('/band/create', auth.isLoggedIn, band.create);
 app.post('/band/save', auth.isLoggedIn, band.save);
 app.get('/band/delete/:id', band.delete);
+app.put('/band/:id/addmember/:name', band.addOneMember);
 app.get('/band/:id', band.show);
 
 app.listen(3000);
