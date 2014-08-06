@@ -6,14 +6,13 @@ block content
       h1 Welcome to Bandify!
       p
         | Here you can quickly start your own jam sessions, record your own sound and even collaborate with other musicians or singers!
-      p
-        |Use the menu above to get freaky
 
     .col-md-6
 
       if (user == null)
-        
         h2 Login
+        if (message != null && message.length > 0)
+          | Username or password was incorrect!
         include loginform
 
       else
@@ -22,8 +21,7 @@ block content
             a(href="/user")
               =user.username
         p
-          a(href="/user")
-            | Account info
+          | Use the menu above to get freaky
 
   .row#testimonials
     h2 Testimonials
@@ -35,7 +33,7 @@ block content
       .col-md-6
         cite [...] over
           br
-          [...] 9 000 000
+          | [...] 9 000 000
           br
           | [...] users
     .row
