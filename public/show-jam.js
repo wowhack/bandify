@@ -71,6 +71,9 @@
 
     $('#active-tracks li').each(function() {
       var trackFile = $(this).data('sound');
+      if(trackFile.indexOf('public') >= 0) 
+        trackFile = trackFile.substring('public/'.length);
+
       var audio = new Audio('/' + trackFile);
       audio.play();
     });
