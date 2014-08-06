@@ -8,12 +8,51 @@
 ------------------------------------------------------------- */
 
 
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background: #EB540A;
+  border: 1px solid transparent;
+  font-size: 80%;
+  padding-top: 1em;
+}
 
-/* General */
+
+
+
 
 p, label {
 	color: #bc451a;
 	font-size: 120%;
+}
+
+.footer div:first-child {
+	text-align: right;
+	border-right: 1px #bc451a solid;
+}
+
+.footer div:last-child {
+	text-align: left;
+	border-left: 1px #bc451a solid;
+}
+
+.footer p {
+	color: white;
+	padding: 0;
+	margin: 0;
 }
 
 h1, h2, h3, h4, h5 {
