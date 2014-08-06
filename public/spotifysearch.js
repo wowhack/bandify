@@ -13,9 +13,12 @@ function searchTrack (trackName, viewname) {
 			data.tracks.items.forEach(function(track) {
 				$("#search-results").append('<li><p class="track-name">' + track.name + ' - </p><p class="track-artist">'+ track.artists[0].name + '</p><button class="btn" data-name="add-song-id" id="' + track.id + '">Add ID</button></li>')
 			});
+		if (viewname == 'track')
+			data.tracks.items.forEach(function(track) {
+				$("#search-results").append('<li><p class="track-name">' + track.name + ' - </p><p class="track-artist">'+ track.artists[0].name + '</p><button class="btn" data-name="record-song-id" id="' + track.id + '">Record song</button></li>')
+			});
 	});
 }
-
 
 $(document).on('click', 'button', function(evt) {
 	if($(evt.target).data('name') == 'jam-search') {
@@ -41,5 +44,23 @@ $(document).on('click', 'button', function(evt) {
 	}
 	if($(evt.target).data('name') == 'add-song-id') {
 		$("#spotify-id-field").val(this.id);
+	}
+	if($(evt.target).data('name') == 'track-search') {
+		searchTrack(document.getElementById('trackName').value, 'track');
+	}
+	if($(evt.target).data('name') == 'record-song-id') {
+		$("#spotify-widget-area").empty();
+		var $iframe = $("<iframe />", {
+			src: 'https://embed.spotify.com/?uri=spotify:track:' + this.id,
+			width: '100%',
+			height: '80',
+			frameborder: '0',
+			allowtransparency: 'true'
+		});
+		$("#spotify-widget-area").append($iframe);
+		$("#spotify-widget-area").append('<button data-name="remove-widget" class="btn btn-danger">Remove Spotify-record</button>');
+	}
+	if($(evt.target).data('name') == 'remove-widget') {
+		$("#spotify-widget-area").empty();
 	}
 });

@@ -3,10 +3,12 @@ extends ../layout
 block content
   .row
     .col-md-3
-        label Search for jams
-        input(id='jam-search-field' name='search', type='text', placeholder='Jam name')
 
-        button.btn.btn-default(data-name='jam-search') Search
+      .form-group
+        label Search for jams
+        input.form-control(id='jam-search-field' name='search', type='text', placeholder='Jam name')
+      .form-group
+        button.btn.btn-primary(data-name='jam-search') Search
 
 
 

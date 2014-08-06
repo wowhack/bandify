@@ -1,6 +1,7 @@
 extends ../layout
 
 block content  
+  #derp(data-jamId=jam.id, hidden="true")
   .row
     .col-md-12
       h1=jam.title
@@ -24,6 +25,9 @@ block content
             = track.title
             a(href="#" data-id=track.id)
               span.glyphicon.glyphicon-remove.pull-right.make-it-red
+            a(href="#" data-id=track.id)
+              span.glyphicon.glyphicon-play.pull-right.hate-it.song-action
+
 
       button#play-jam.btn.btn-primary Play jam
       
