@@ -1,10 +1,14 @@
 extends ../layout
 
 block content
-  h1 Create jam form
+
 
   .row
-    .col-md-5
+    .col-md-8.col-md-offset-2
+      h1 Create a new jam
+
+    .col-md-8.col-md-offset-2
+
       form(method='post', action='/jam/save')
         .form-group
           label Title
@@ -18,21 +22,13 @@ block content
           label Lyrics <a href="#" id="musixmatch-modal-btn">(fetch from musixmatch)</a>
 
           textarea.form-control#jam-lyrics(name='lyrics', rows='3')
-
-        button.btn.btn-success Create jam
-
-
-    .col-md-4
-      .form-group
-        label Spotify-song
-        input.form-control(id='spotify-id-field', name='spotify', type='text', readonly="readonly" placeholder='Spotify-id')
-        p(id='spotify-song-name') 
-      label Search Spotify song
-      .form-group.form-inline
-        input.form-control(id='trackName', name='title', type='text', placeholder='Name')
-        button(class='btn btn-primary spoti-search-btn' data-name='create-search') Search songs
-
-      ul(id='search-results')
+        .form-group
+          label Spotify-song
+          input.form-control(id='spotify-id-field', name='spotify', type='text' placeholder='Spotify song')
+        .form-group
+          button.btn.btn-success
+            | Let's jam
+            span(style="margin-left:10px").glyphicon.glyphicon-heart
 
   
 
