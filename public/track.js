@@ -72,6 +72,6 @@ if (window.location.pathname === '/tracks/create') {
       stopRecording();
       $('.record-group').fadeOut(200, function() {$('.recording-completed').fadeIn();});
       
-    })
+    });
   })(jQuery);
 }
