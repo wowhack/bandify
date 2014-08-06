@@ -111,11 +111,11 @@ binaryServer = BinaryServer({port: 9001});
 
 binaryServer.on('connection', function(client) {
   var r_id = Math.floor(Math.random()*36000),
-      path = 'sound/demo' + r_id + '.wav';
+      path = 'public/sound/demo' + r_id + '.wav';
   
   while(fs.existsSync(path)) {
     r_id = Math.floor(Math.random()*36000);
-    path = 'sound/demo' + r_id + '.wav';
+    path = 'public/sound/demo' + r_id + '.wav';
   }
 
   
