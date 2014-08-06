@@ -94,3 +94,11 @@ exports.addTrack = function(req, res) {
     res.send("Allt är gött");
   });
 }
+
+exports.removeTrack = function(req, res) {
+
+  Jam.update({_id: req.body.jamId}, {$pull: {tracks: req.body.trackId}}, function(err, s) {
+    if(err) console.error(err)
+     res.send('Everything is alright');
+  });
+}
