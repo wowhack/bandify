@@ -15,10 +15,11 @@
   
   $('#play-jam').click(function() {
 
-    var audio = new Audio('/austin.wav');
-    audio.play();
-    var death = new Audio('/death.wav');
-    death.play()
+    $('#active-tracks li').each(function() {
+      var trackFile = $(this).data('sound');
+      var audio = new Audio('/' + trackFile);
+      audio.play();
+    });
 
   });
 
