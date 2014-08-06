@@ -1,8 +1,12 @@
+// For dev, false otherwise
+var autologin = true;
+var User = require('./models/user');
+
 var bodyParser = require('body-parser');
 var express = require('express');
 var mongoose = require('mongoose');
 var getRawBody = require('raw-body')
-var typer      = require('media-typer')
+var typer = require('media-typer')
 var BinaryServer = require('binaryjs').BinaryServer;
 var fs = require('fs');
 var wav = require('wav');
@@ -37,10 +41,45 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-// Always pass user session object if available (equals to logged in)
+// Always pass user session object to (jade) templates if available (equals to logged in)
 app.use(function(req, res, next) {
-  res.locals.user = req.user;
-  next();
+
+  // If in devmode, login automatically (set at the top of this page)
+  if(!autologin){
+    res.locals.user = req.user;
+    next();
+  } else {
+
+    if(req.isAuthenticated()) {
+      res.locals.user = req.user;
+      next();
+    }
+
+    else {
+    
+      var username = 'AuthMasterKrobbs';
+  
+      User.findOne({ 'username' :  username }, function(err, user) {
+        // if there are any errors, return the error
+        if (err) {
+          return next(err);
+        }
+  
+        // check to see if theres already a user with that username
+        if (user) {
+          req.login(user, function(err) {
+            if (err) 
+              return next(err);
+            return next();
+          });
+        } 
+        
+        
+      });
+    }
+    
+  }
+  
 });
 
 
