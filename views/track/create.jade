@@ -18,17 +18,6 @@ block content
           label Good job :)
         .form-group
           input.btn.btn-primary(type="submit" value="GOGOGOO")
-    .col-md-4
-      .form-group
-        label Spotify-song
-        input.form-control(id='spotify-id-field', name='spotify', type='text', readonly="readonly" placeholder='Spotify-id')
-        p(id='spotify-song-name') 
-        label Search Spotify song
-      .form-group.form-inline
-        input.form-control(id='trackName', name='title', type='text', placeholder='Name')
-        button(class='btn btn-primary spoti-search-btn' data-name='track-search') Search songs
-
-      ul(id='search-results')
 
   script(src="/spotify-web-api.js")
   script(src="/spotifysearch.js")
