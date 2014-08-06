@@ -167,7 +167,7 @@ h1, h2, h3, h4, h5 {
 
 
 .jam-list li:hover {
-	background: #EB540A;
+	background: rgba(0, 0, 0, 0.3);
 }
 
 
@@ -182,4 +182,47 @@ h1, h2, h3, h4, h5 {
 
 .hate-it {
 	margin-right: 10px;
+}
+
+.jam-search {
+	text-align: center;
+
+}
+
+.jam-search label {
+	font-size: 27px;
+	padding-bottom: 1em;
+	padding-top: 3em;
+}
+
+#jam-search-field {
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	font-style: italic;
+	padding: 1.8em;
+	font-size: 16px;
+	border-radius: 20px;
+}
+
+.jam-search-btn-group {
+	text-align: center;
+}
+
+.jam-search-btn-group button {
+	padding-left: 2em;
+	padding-right: 2em;
+	border-radius: 15px;
+}
+
+.spotify-btn {
+	background: rgba(135, 182, 1, 0.8);
+	color: white;
+	margin-left: 1em;
+}
+
+.spotify-btn:hover {
+	background: rgba(135, 182, 1, 1);
+	color: white;
 }
