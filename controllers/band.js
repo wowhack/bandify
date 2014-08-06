@@ -38,3 +38,18 @@ exports.delete = function(req, res) {
     res.redirect('/band');
   })
 }
+
+exports.getAll = function(req, res) {
+	  Band.find({}, function(err, bands) {
+    res.json({ bands: bands });  
+  });
+}
+
+exports.addOneMember = function(req, res) {
+	console.log('params', req.params)
+	Band.update({_id: req.params.id}, {$push: {members: req.params.name}}, {upsert: false}, function(err, model) {
+		res.render('band/show', {band: req.params.id});
+	});
+	res.render('band/show', {band: req.params.id});
+	
+}
