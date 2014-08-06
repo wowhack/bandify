@@ -1,6 +1,7 @@
 extends ../layout
 
 block content  
+  #derp(data-jamId=jam.id, hidden="true")
   .row
     .col-md-12
       h1=jam.title
@@ -17,10 +18,14 @@ block content
   .row
     .col-md-8
       h2 Active tracks
+
       ul.list-group#active-tracks
         for track in jam.tracks
           li.list-group-item(data-sound=track.recordingId)
             = track.title
+            input(class="pull-right", type="checkbox", checked=true)
+            a(href="#" data-id=track.id)
+              span.glyphicon.glyphicon-remove.pull-right.make-it-red
 
       button#play-jam.btn.btn-primary Play jam
       

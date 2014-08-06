@@ -1,8 +1,12 @@
+// For dev, false otherwise
+var autologin = true;
+var User = require('./models/user');
+
 var bodyParser = require('body-parser');
 var express = require('express');
 var mongoose = require('mongoose');
 var getRawBody = require('raw-body')
-var typer      = require('media-typer')
+var typer = require('media-typer')
 var BinaryServer = require('binaryjs').BinaryServer;
 var fs = require('fs');
 var wav = require('wav');
@@ -37,10 +41,12 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-// Always pass user session object if available (equals to logged in)
+// Always pass user session object to (jade) templates if available (equals to logged in)
 app.use(function(req, res, next) {
+
   res.locals.user = req.user;
   next();
+  
 });
 
 
@@ -88,6 +94,7 @@ app.get('/jam/delete/:id', jam.delete);
 app.get('/jam/search/:id', jam.searchSingleJam);
 app.get('/jam/search/jams/:id', jam.searchMultipleJams);
 app.post('/jam/addTrack', jam.addTrack);
+app.post('/jam/removeTrack', jam.removeTrack);
 
 app.get('/tracks', track.index)
 app.get('/tracks/create', auth.isLoggedIn, track.create);
