@@ -1,5 +1,7 @@
 // For dev, false otherwise
 var autologin = true;
+var username = 'AuthMasterKrobbs';
+var password = 'password';
 var User = require('./models/user');
 
 var bodyParser = require('body-parser');
