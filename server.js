@@ -44,41 +44,8 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 // Always pass user session object to (jade) templates if available (equals to logged in)
 app.use(function(req, res, next) {
 
-  // If in devmode, login automatically (set at the top of this page)
-  if(!autologin){
-    res.locals.user = req.user;
-    next();
-  } else {
-
-    if(req.isAuthenticated()) {
-      res.locals.user = req.user;
-      next();
-    }
-
-    else {
-    
-      var username = 'AuthMasterKrobbs';
-  
-      User.findOne({ 'username' :  username }, function(err, user) {
-        // if there are any errors, return the error
-        if (err) {
-          return next(err);
-        }
-  
-        // check to see if theres already a user with that username
-        if (user) {
-          req.login(user, function(err) {
-            if (err) 
-              return next(err);
-            return next();
-          });
-        } 
-        
-        
-      });
-    }
-    
-  }
+  res.locals.user = req.user;
+  next();
   
 });
 
