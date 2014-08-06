@@ -12,6 +12,12 @@ var UserSchema = new Schema({
 
 });
 
+/*
+ * Shouldn't be here in the model, who cares? Not me.
+ * 
+ * – AuthM4st3r
+ */
+
 // generating a hash
 UserSchema.methods.generateHash = function(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
