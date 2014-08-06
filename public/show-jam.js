@@ -8,6 +8,14 @@
       }
     });
   });
+  var startTime;
+  var isPlaying;
+  // var nrOfTracksPlaying = 0;
+
+  var tracksPlaying = {};
+
+
+  var activeTracks = [];
 
   $('#available-tracks').on('click', 'a', function(e) {
     e.preventDefault();
@@ -70,15 +78,52 @@
 
   $('#play-jam').click(function() {
 
-    $('#active-tracks li').each(function() {
-      var trackFile = $(this).data('sound');
+    startTime = Date.now();
+
+    $('#active-tracks input[type="checkbox"]').each(function() {
+      var $checkbox = $(this);
+      var trackFile = $checkbox.parent().data('sound');
       if(trackFile.indexOf('public') >= 0) 
         trackFile = trackFile.substring('public/'.length);
 
+      // console.log('Chched?', trackFile);
       var audio = new Audio('/' + trackFile);
-      audio.play();
+      tracksPlaying[ trackFile ] = audio;
+
+      var checked = $checkbox.prop('checked');
+      if ( checked ) {
+        audio.play();
+        // nrOfTracksPlaying++;
+        audio.onended = function() {
+          
+        };
+        isPlaying = true;
+      }
     });
 
+  });
+
+  $('#active-tracks input[type="checkbox"]').click(function() {
+    // check if playing 
+    if ( !isPlaying ) return;
+
+    var $checkbox = $(this);
+    var isChecked = $checkbox.prop('checked');
+    console.log('Is checked', isChecked);
+
+    var trackFile = $(this).parent().data('sound');
+    var audio = tracksPlaying[ trackFile ];
+
+    // if its currently not checked we should pause it, it was checked before this function was called?
+    if ( !isChecked ) {
+      audio.pause();
+    } else {
+      var elapsedInSeconds = (Date.now() - startTime) / 1000;
+      audio.currentTime = elapsedInSeconds;
+      audio.play();
+    }
+
+    // is the current track checked or unchecked? How long has the recording elapsed?
   });
 
 })(jQuery);

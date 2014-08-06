@@ -23,6 +23,7 @@ block content
         for track in jam.tracks
           li.list-group-item(data-sound=track.recordingId)
             = track.title
+            input(class="pull-right", type="checkbox", checked=true)
             a(href="#" data-id=track.id)
               span.glyphicon.glyphicon-remove.pull-right.make-it-red
 
