@@ -19,6 +19,47 @@ h1, h2, h3, h4, h5 {
 	color: #E68757;
 }
 
+#testimonials {
+	text-align: center;
+	background: #FFE9DF;
+	margin-top: 4em;
+	margin-bottom: 4em;
+	padding-top: 2em;
+	padding-bottom: 4em;
+	border: 1em #FFCFB9 solid;
+}
+
+#testimonials div {
+	position: relative;
+}
+
+#testimonials .row {
+	margin-bottom: 3em;
+}
+
+#testimonials div cite {
+	
+	font-size: 3em;
+	color: #634F46;
+	text-shadow: 6px 6px #EEBEA7;
+}
+#testimonials cite:before {
+	font-size: 200%;
+	position: absolute;
+	content: '\201C';
+	top: -20px;
+	left: 15%;
+	right: auto;
+}
+#testimonials cite:after {
+	font-size: 200%;
+	position: absolute;
+  content: '\201D';
+
+  right: 15%;
+	left: auto;
+}
+
 /* Header */
 
 .navbar {
@@ -127,6 +168,11 @@ h1, h2, h3, h4, h5 {
 
 .jam-list li:hover {
 	background: #EB540A;
+}
+
+
+.make-it-red {
+	color: red;
 }
 
 

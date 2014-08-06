@@ -1,19 +1,47 @@
 extends layout
 
 block content
-  h1 Welcome to Bandify!
+  .row
+    .col-md-6
+      h1 Welcome to Bandify!
+      p
+          | Here you can quickly start your own jam sessions, record your own sound and even collaborate with other musicians or singers!
+      p
+        | Use the menu above to get freaky
 
-  if (user == null)
-    p
-      | Here you can quickly start your own jam sessions, record your own sound and even collaborate with other musicians or singers!
-    h2 Sign up now!
-    include signupform
+    .col-md-6
 
-  else
-    h2 Logged in as 
-      span.username
-        a(href="/user")
-          =user.username
-    p
-      a(href="/logout")
-        | Logout?
+      if (user == null)
+        
+        h2 Login
+        include loginform
+
+      else
+        h2 Logged in as 
+          span.username
+            a(href="/user")
+              =user.username
+        p
+          a(href="/logout")
+            | Logout?
+
+  .row#testimonials
+    h2 Testimonials
+    .row
+      .col-md-6
+        cite Bandify is
+          br
+          | a [...] webapp
+      .col-md-6
+        cite [...] over
+          br
+          [...] 9 000 000
+          br
+          | [...] users
+    .row
+      .col-md-6
+        cite
+          | [...] great [...]
+      .col-md-6
+        cite
+          | What the [...]
