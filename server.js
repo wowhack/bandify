@@ -50,6 +50,7 @@ var jam = require('./controllers/jam');
 var user = require('./controllers/user');
 var track = require('./controllers/track');
 var musixmatch = require('./controllers/musixmatch');
+var band = require('./controllers/band');
 
 app.get('/', function(req, res) {
   res.render('index');
@@ -94,6 +95,12 @@ app.get('/tracks/:id', track.show)
 app.get('/example', example.index);
 
 app.get('/musixmatch/:artist/:title', musixmatch.findSongs);
+
+app.get('/band', band.index);
+app.get('/band/create', auth.isLoggedIn, band.create);
+app.post('/band/save', auth.isLoggedIn, band.save);
+app.get('/band/delete/:id', band.delete);
+app.get('/band/:id', band.show);
 
 app.listen(3000);
 

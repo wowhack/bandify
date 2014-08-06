@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  h1 Create band form
+
+  .row
+    .col-md-5
+      form(method='post', action='/band/save')
+        .form-group
+          label Name
+          input.form-control(name='name', type='text', placeholder='Band name')
+
+        .form-group
+          label Description
+          textarea.form-control(name='desc', rows='3')
+
+
+        button.btn.btn-success Create band
