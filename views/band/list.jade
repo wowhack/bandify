@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+  .row
+    .col-md-9
+      if (bands != null && bands.length != 0)
+        h1 Listing the bands
+        ul.band-list
+          for band in bands
+            li.band-list-item
+              p
+                =band.name
+              a.btn.btn-default(href='/band/' +  (band._id)) View Band
+              a.btn.btn-danger(href='/band/delete/' + (band._id)) Delete
+      else
+        h1 There are no bands :(((

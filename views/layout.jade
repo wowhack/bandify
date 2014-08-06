@@ -1,10 +1,21 @@
 doctype html
 html
   head
-    title Jade Suger
+    title Bandify
     link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css")
     link(rel="stylesheet", href="/style.css")
+
+    script(src="http://cdn.binaryjs.com/0/binary.js")
+
+
+    script(src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js")
+    script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
+
   body
     include header
     .container
       block content
+    
+    script(src="/recorder.js")
+    script(src="/recorderWorker.js")
+    script(src="/track.js")

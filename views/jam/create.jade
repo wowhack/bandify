@@ -1,0 +1,66 @@
+extends ../layout
+
+block content
+
+
+  .row
+    .col-md-8.col-md-offset-2
+      h1 Create a new jam
+
+    .col-md-8.col-md-offset-2
+
+      form(method='post', action='/jam/save')
+        .form-group
+          label Title
+          input.form-control(name='title', type='text', placeholder='My song')
+
+        .form-group
+          label Description
+          textarea.form-control(name='desc', rows='3')
+
+        .form-group
+          label Lyrics <a href="#" id="musixmatch-modal-btn">(fetch from musixmatch)</a>
+
+          textarea.form-control#jam-lyrics(name='lyrics', rows='3')
+        .form-group
+          label Spotify-song
+          input.form-control(id='spotify-id-field', name='spotify', type='text' placeholder='Spotify song')
+        .form-group
+          button.btn.btn-success
+            | Let's jam
+            span(style="margin-left:10px").glyphicon.glyphicon-heart
+
+  
+
+  #lyrics-modal.modal.fade
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(data-dismiss='modal', type='button')
+          h4.modal-title MusixMatch Fetcher
+        .modal-body
+          .row
+            .col-xs-4
+              input#song-title.form-control(placeholder='Song title')
+
+            .col-xs-4
+              input#song-artist.form-control(placeholder='Song artist')
+
+            .col-xs-4
+              button#find-songs.btn.btn-primary Get lyrics
+          .row(style="margin-top: 10px")
+            .col-md-12
+              textarea#lyrics.form-control(rows=10, placeholder="Sing a song bout a hackathon *drums* *guitars* *fanfare*")
+         .modal-footer
+            button.btn.btn-success#add-lyrics-btn Add lyrics
+            button.btn.btn-default(data-dismiss="modal") Close
+
+  script(src='/handlebars-v1.3.0.js')
+  script(src='/create-jam.js')
+  script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
+  script(src="/spotify-web-api.js")
+  script(src="/spotifysearch.js")
+
+  script#song-lyrics(type='text/x-handlebars-template')
+    textarea.form-control(rows=10)
+      {{lyrics}}

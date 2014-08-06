@@ -1,0 +1,24 @@
+extends ../layout
+
+block content  
+  .row
+    .col-md-12
+      h1=band.name
+      p 
+        =band.desc
+      p#band-id
+        =band.id
+      ul.band-members
+        for member in band.members
+          li.band-member
+            =member
+  .row
+    .col-md-5
+      .form-group.form-inline
+        input.form-control(id='username', type='text', placeholder'Username')
+        button.btn.btn-primary.user-search-btn(data-name='user-search') Search user
+
+    .col-md-5
+      ul(id='search-results')
+
+  script(src="/show-band.js")

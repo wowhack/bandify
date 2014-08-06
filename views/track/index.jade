@@ -1,0 +1,26 @@
+extend ../layout
+
+block content
+
+  if (user != null)
+    if (userTracks != null)
+      h2 Your tracks
+      ul
+      for track in userTracks
+        li
+          a(href="/tracks/" + (track._id))
+            =track.title
+
+    else if (tracks != null)
+      h2 You don't have any tracks :/
+
+  if (tracks != null)
+    h2 All tracks
+    ul
+    for track in tracks
+      li
+        a(href="/tracks/" + (track._id))
+          =track.title
+
+  else
+    h2 There are no tracks :/

@@ -1,0 +1,18 @@
+.row
+  .col-md-6
+    form(method='post', action='/signup')
+      .form-group
+        label(for="username") Username
+        input.form-control(type="text", placeholder="Username", name="username", id="username")
+      .form-group
+        label(for="username") Password
+        input.form-control(type="password", placeholder="Password", name="password", id="password")
+      .form-group
+        input.btn.btn-primary(type="submit" value="Signup")
+
+.row
+  .col-md-12
+    h2 Already have an account?
+    p
+      | Then why are you here? 
+      a(href="/login") Login!
