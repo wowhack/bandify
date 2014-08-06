@@ -1,12 +1,13 @@
-
-/* Global
-------------------------------------------------------------- */
-
 /*
  * orange: #EB540A
  * dark orange: #bc451a
  *
  */
+
+/* Global
+------------------------------------------------------------- */
+
+
 
 /* General */
 
@@ -16,8 +17,9 @@ p, label {
 
 h1, h2, h3, h4, h5 {
 	color: #E68757;
-
 }
+
+/* Header */
 
 .navbar {
 	background: #EB540A;
@@ -50,6 +52,12 @@ h1, h2, h3, h4, h5 {
 .navbar-header .navbar-brand:hover {
 	background: #D43D06;
 	color: white;
+}
+
+/* Main page */
+
+.username {
+	color: black;
 }
 
 /* Button */
