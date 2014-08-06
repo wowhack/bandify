@@ -12,7 +12,7 @@
         
     });
   });
-
+  
   $('#play-jam').click(function() {
 
     var audio = new Audio('/austin.wav');
