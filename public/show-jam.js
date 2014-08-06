@@ -112,6 +112,8 @@
     console.log('Is checked', isChecked);
 
     var trackFile = $(this).parent().data('sound');
+    if(trackFile.indexOf('public') >= 0) 
+        trackFile = trackFile.substring('public/'.length);
     var audio = tracksPlaying[ trackFile ];
 
     // if its currently not checked we should pause it, it was checked before this function was called?
