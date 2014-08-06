@@ -127,6 +127,7 @@ app.get('/jam/delete/:id', jam.delete);
 app.get('/jam/search/:id', jam.searchSingleJam);
 app.get('/jam/search/jams/:id', jam.searchMultipleJams);
 app.post('/jam/addTrack', jam.addTrack);
+app.post('/jam/removeTrack', jam.removeTrack);
 
 app.get('/tracks', track.index)
 app.get('/tracks/create', auth.isLoggedIn, track.create);

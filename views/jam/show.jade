@@ -17,10 +17,13 @@ block content
   .row
     .col-md-8
       h2 Active tracks
+
       ul.list-group#active-tracks
         for track in jam.tracks
           li.list-group-item(data-sound=track.recordingId)
             = track.title
+            a(href="#" data-id=track.id)
+              span.glyphicon.glyphicon-remove.pull-right.make-it-red
 
       button#play-jam.btn.btn-primary Play jam
       
