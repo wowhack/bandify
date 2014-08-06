@@ -4,7 +4,6 @@
     var id = $(track).find('a').data('id');
     $('#available-tracks').children('li').each(function(i, t) {
       if($(t).find('a').data('id') === id) {
-        console.log($(t))
         $(t).remove();
       }
     });
@@ -14,7 +13,9 @@
     e.preventDefault();
     var elem = $(this);
     var targetId = $(this).data('id');
-    var jamId = '53e1e6f9975abe0000528c76';
+    
+    var jamId = $('#derp').data('jamid');
+    
     $.post('/jam/addTrack', {
       jamId: jamId, trackId: targetId
     }, function(data) {
