@@ -41,35 +41,39 @@
         copy.hide();
         elem.parent('li').remove();
         $('#active-tracks').append(copy);
+        var newElems = jQuery.parseHTML('<a href="#" data-id=' + targetId + ' ><span class="glyphicon glyphicon-play pull-right hate-it song-action"></span></a>')
+        copy.append(newElems);
         copy.fadeIn();
       })
 
     });
   });
 
-  $('#active-tracks').on('click', 'a', function(e) {
+  $('#active-tracks').on('click', '.glyphicon-remove', function(e) {
     e.preventDefault();
 
     var elem = $(this);
-    var targetId = $(this).data('id');
-    var jamId = '53e1e6f9975abe0000528c76';
+    var targetId = $(this).parent().data('id');
+    var jamId = $('#derp').data('jamid');
 
     $.post('/jam/removeTrack', {
       jamId: jamId, trackId: targetId
     }, function(data) {
-      var parent = elem.parent('li');
+      var parent = elem.closest('li');
 
-      elem.children('span')
+      elem
         .removeClass('glyphicon-remove make-it-red')
         .addClass('glyphicon-plus');
 
       copy = parent.clone(false);
 
 
-      elem.parent('li').fadeOut(200, function() {
+      elem.closest('li').fadeOut(200, function() {
         copy.hide();
         elem.remove();
         $('#available-tracks').prepend(copy);
+        copy.find('.song-action').remove();
+
         copy.fadeIn();
       });
 
@@ -80,9 +84,9 @@
 
     startTime = Date.now();
 
-    $('#active-tracks input[type="checkbox"]').each(function() {
-      var $checkbox = $(this);
-      var trackFile = $checkbox.parent().data('sound');
+    $('#active-tracks li').each(function() {
+      var $li = $(this);
+      var trackFile = $li.data('sound');
       if(trackFile.indexOf('public') >= 0) 
         trackFile = trackFile.substring('public/'.length);
 
@@ -90,42 +94,43 @@
       var audio = new Audio('/' + trackFile);
       tracksPlaying[ trackFile ] = audio;
 
-      var checked = $checkbox.prop('checked');
-      if ( checked ) {
-        audio.play();
-        // nrOfTracksPlaying++;
-        audio.onended = function() {
+      var playButton = $li.find('.song-action');
+      playButton.removeClass('glyphicon-play').addClass('glyphicon-stop')
+      // $checkbox.removeClass('glyphicon-play').addClass('glyphicon-pause')
+      audio.play();
+      // nrOfTracksPlaying++;
+      audio.onended = function() {
           
-        };
-        isPlaying = true;
-      }
+      };
+      isPlaying = true;
+
     });
 
   });
 
-  $('#active-tracks input[type="checkbox"]').click(function() {
+  $('#active-tracks').on('click', '.song-action', function(e) {
+    e.preventDefault();
     // check if playing 
     if ( !isPlaying ) return;
 
-    var $checkbox = $(this);
-    var isChecked = $checkbox.prop('checked');
-    console.log('Is checked', isChecked);
+    var $songActionSpan = $(this);
+    var trackIsPlaying = $songActionSpan.hasClass('glyphicon-stop');
 
-    var trackFile = $(this).parent().data('sound');
+    var trackFile = $songActionSpan.closest('li').data('sound');
     if(trackFile.indexOf('public') >= 0) 
         trackFile = trackFile.substring('public/'.length);
+
     var audio = tracksPlaying[ trackFile ];
 
-    // if its currently not checked we should pause it, it was checked before this function was called?
-    if ( !isChecked ) {
+    if ( trackIsPlaying) {
       audio.pause();
+      $songActionSpan.removeClass('glyphicon-stop').addClass('glyphicon-play');
     } else {
       var elapsedInSeconds = (Date.now() - startTime) / 1000;
       audio.currentTime = elapsedInSeconds;
       audio.play();
+      $songActionSpan.removeClass('glyphicon-play').addClass('glyphicon-stop');
     }
-
-    // is the current track checked or unchecked? How long has the recording elapsed?
   });
 
 })(jQuery);

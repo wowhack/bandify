@@ -133,3 +133,7 @@ h1, h2, h3, h4, h5 {
 .make-it-red {
 	color: red;
 }
+
+.hate-it {
+	margin-right: 10px;
+}
