@@ -53,6 +53,7 @@ exports.save = function(req, res) {
   var newJam = new Jam({ 
     title: req.body.title,
     desc: req.body.desc,
+    lyrics: req.body.lyrics,
     spotifyId: req.body.spotify,
     owner: req.user
   });

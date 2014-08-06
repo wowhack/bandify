@@ -6,6 +6,11 @@ block content
       h1=jam.title
       p
         =jam.desc
+
+  .row
+    .col-md-8
+      textarea.form-control(rows=10, disabled=true)
+        != jam.lyrics
       p
         =jam.spotifyId
 
