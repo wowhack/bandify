@@ -9,7 +9,7 @@ block content
           label(for="title") Title
           input.form-control(type="text", placeholder="Your title", name="title", id="title")
         .form-group.record-group
-          label Spela in ditt sound
+          label Create your sound
           .btn-group
             button#track_start.btn.btn-success Start Recording
             button#track_stop.disabled.btn.btn-danger Stop Recording
@@ -17,7 +17,7 @@ block content
         .form-group.recording-completed(style="display:none")
           label Sound recorded
         .form-group
-          input.btn.btn-primary(type="submit" value="GOGOGOO")
+          input.btn.btn-primary(type="submit" value="Save track")
 
   script(src="/spotify-web-api.js")
   script(src="/spotifysearch.js")
