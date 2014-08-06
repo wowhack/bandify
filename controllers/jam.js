@@ -90,5 +90,6 @@ exports.getAll = function(req, res) {
 exports.addTrack = function(req, res) {
   Jam.update({_id: req.body.jamId}, {$push: {tracks: req.body.trackId}}, function(err, s) {
     if(err) console.error(err)
+    res.send("Allt är gött");
   });
 }

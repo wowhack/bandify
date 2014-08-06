@@ -12,9 +12,9 @@ block content
   .row
     .col-md-8
       h2 Active tracks
-      ul.list-group
+      ul.list-group#active-tracks
         for track in jam.tracks
-          li.list-group-item
+          li.list-group-item(data-id=track.recordingId)
             = track.title
 
 

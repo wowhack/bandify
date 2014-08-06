@@ -9,7 +9,7 @@
     $.post('/jam/addTrack', {
       jamId: jamId, trackId: targetId
     }, function(data) {
-      console.log(data);
+        
     });
   });
 
