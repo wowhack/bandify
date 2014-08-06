@@ -16,3 +16,18 @@ block content
 
 
         button.btn.btn-success Create band
+
+    .col-md-5
+      .form-group
+        label Search users
+        input.form-control(id='userId', name='member', type='text', readonly='readonly', placeholder='UserID')
+
+      .form-group.form-inline
+        input.form-control(id='username', type='text', placeholder'Username')
+        button.btn.btn-primary.user-search-btn(data-name='user-search') Search user
+
+      ul(id='search-results')
+
+  script(src="/create-band.js")
+
+

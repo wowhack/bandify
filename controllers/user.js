@@ -1,4 +1,4 @@
-var Track = require('../models/user.js');
+var User = require('../models/user.js');
 var app = require('express');
 
 exports.login = function(req, res) {
@@ -29,4 +29,13 @@ exports.search = function(req, res) {
   User.findById(userID, function(err, user) {
     res.json({ user: user });
   });
+}
+
+exports.searchUsername = function(req, res) {
+  var userName = req.params.id;
+
+  User.find({username: userName }, function(err, users) {
+    console.log('users', users);
+    res.json({ users: users });
+  })
 }

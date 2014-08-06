@@ -2,6 +2,15 @@
 
   $('#musixmatch-modal-btn').click(showMusixMatchModal);
 
+  $('#add-lyrics-btn').click(function(e) {
+
+    // get lyrics
+    var lyrics = $('#lyrics').text();
+    $('#jam-lyrics').text( lyrics ); 
+
+    $('#lyrics-modal').modal('hide');
+  });
+
   $('#find-songs').click(function(e) {
     e.preventDefault();
 
@@ -15,13 +24,7 @@
   function addLyricsToModal(data) {
     if ( !data.lyrics ) return;
 
-    var source   = $("#song-lyrics").html();
-    var template = Handlebars.compile(source);
-
-    // go through the songs
-    var html = template( data );
-    $('#results').html( html ); 
-
+    $('#lyrics').text( data.lyrics );
   }
 
   function showMusixMatchModal(e) {
@@ -29,6 +32,5 @@
 
     $('#lyrics-modal').modal();
   }
-
 
 })(jQuery);

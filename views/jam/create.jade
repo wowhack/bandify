@@ -16,8 +16,8 @@ block content
 
         .form-group
           label Lyrics <a href="#" id="musixmatch-modal-btn">(fetch from musixmatch)</a>
-          textarea.form-control(name='lyrics', rows='3')
 
+          textarea.form-control#jam-lyrics(name='lyrics', rows='3')
 
         button.btn.btn-success Create jam
 
@@ -54,9 +54,10 @@ block content
               button#find-songs.btn.btn-primary Get lyrics
           .row(style="margin-top: 10px")
             .col-md-12
-              #results
+              textarea#lyrics.form-control(rows=10, placeholder="Sing a song bout a hackathon *drums* *guitars* *fanfare*")
          .modal-footer
-            button.btn.btn-default Close
+            button.btn.btn-success#add-lyrics-btn Add lyrics
+            button.btn.btn-default(data-dismiss="modal") Close
 
   script(src='/handlebars-v1.3.0.js')
   script(src='/create-jam.js')

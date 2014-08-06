@@ -6,25 +6,30 @@ block content
       h1=jam.title
       p
         =jam.desc
+
+  .row
+    .col-md-8
+      textarea.form-control(rows=10, disabled=true)
+        != jam.lyrics
       p
         =jam.spotifyId
 
   .row
     .col-md-8
       h2 Active tracks
-      ul.list-group
+      ul.list-group#active-tracks
         for track in jam.tracks
-          li.list-group-item
+          li.list-group-item(data-sound=track.recordingId)
             = track.title
 
-
       button#play-jam.btn.btn-primary Play jam
+      
     .col-md-4
       h2 Available Tracks
 
       ul#available-tracks.list-group
         for track in tracks
-          li.list-group-item
+          li.list-group-item(data-sound=track.recordingId)
             =track.title
             a(href="#" data-id=track.id)
               span.glyphicon.glyphicon-plus.pull-right

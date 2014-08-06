@@ -114,6 +114,7 @@ app.post('/login', passport.authenticate('local-login', {
 }));
 
 app.get('/user', auth.isLoggedIn, user.show);
+app.get('/user/username/:id', user.searchUsername);
 app.get('/user/:id', user.search);
 
 app.get('/jam', jam.index);
@@ -138,7 +139,9 @@ app.get('/musixmatch/:artist/:title', musixmatch.findSongs);
 app.get('/band', band.index);
 app.get('/band/create', auth.isLoggedIn, band.create);
 app.post('/band/save', auth.isLoggedIn, band.save);
+app.get('/band/user/:id', band.getUserBand);
 app.get('/band/delete/:id', band.delete);
+app.put('/band/:id/addmember/:name', band.addOneMember);
 app.get('/band/:id', band.show);
 
 app.listen(3000);
@@ -148,11 +151,11 @@ binaryServer = BinaryServer({port: 9001});
 
 binaryServer.on('connection', function(client) {
   var r_id = Math.floor(Math.random()*36000),
-      path = 'sound/demo' + r_id + '.wav';
+      path = 'public/sound/demo' + r_id + '.wav';
   
   while(fs.existsSync(path)) {
     r_id = Math.floor(Math.random()*36000);
-    path = 'sound/demo' + r_id + '.wav';
+    path = 'public/sound/demo' + r_id + '.wav';
   }
 
   
