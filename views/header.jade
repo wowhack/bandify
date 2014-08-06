@@ -14,20 +14,21 @@
         if (user != null)
           li
             a(href='/user') User info
-          li
-            a(href='/jam/create') New jam
-          li
-            a(href='/jam') List jams
+
+          li.dropdown
+            a.dropdown-toggle(href="#", data-toggle="dropdown") Jams <span class="caret"></span> 
+            ul.dropdown-menu
+              li
+                a(href="/jam") List jams
+                a(href="/jam/create") New jam
           li
             a(href='/jam/search') Search Spotify-Jams
-          li
-            a(href='/tracks/') Tracks
-          li
-            a(href='/tracks/create') New track
-          li
-            a(href='/band/create') New band
-          li
-            a(href='/band') List bands
+          li.dropdown
+            a.dropdown-toggle(href="#", data-toggle="dropdown") Tracks <span class="caret"></span> 
+            ul.dropdown-menu
+              li
+                a(href="/tracks/") List tracks
+                a(href="/tracks/create") New track
 
         else
           li
