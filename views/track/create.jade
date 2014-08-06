@@ -1,34 +1,30 @@
 extends ../layout
 
 block content
-  h2 How about creating a new track, huh?
+
   .row
-    .col-md-3
+    .col-md-8.col-md-offset-2
+      h2 How about creating a new track, huh?
+  .row
+    .col-md-8.col-md-offset-2
       form(method='post', action='/tracks/save')
         .form-group
           label(for="title") Title
           input.form-control(type="text", placeholder="Your title", name="title", id="title")
-        .form-group.record-group
-          label Spela in ditt sound
+
+        .form-group.clearfix.record-group
+          label(style="display: block") Create your sound
           .btn-group
             button#track_start.btn.btn-success Start Recording
             button#track_stop.disabled.btn.btn-danger Stop Recording
-        .form-group#spotify-widget-area
-        .form-group.recording-completed(style="display:none")
-          label Good job :)
-        .form-group
-          input.btn.btn-primary(type="submit" value="GOGOGOO")
-    .col-md-4
-      .form-group
-        label Spotify-song
-        input.form-control(id='spotify-id-field', name='spotify', type='text', readonly="readonly" placeholder='Spotify-id')
-        p(id='spotify-song-name') 
-        label Search Spotify song
-      .form-group.form-inline
-        input.form-control(id='trackName', name='title', type='text', placeholder='Name')
-        button(class='btn btn-primary spoti-search-btn' data-name='track-search') Search songs
 
-      ul(id='search-results')
+        .form-group#spotify-widget-area
+
+        .form-group.recording-completed(style="display:none")
+          p(style="padding:15px; border-radius:5px").bg-success Sound recorded
+
+        .form-group
+          input.btn.btn-primary(type="submit" value="Save track")
 
   script(src="/spotify-web-api.js")
   script(src="/spotifysearch.js")

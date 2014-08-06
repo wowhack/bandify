@@ -7,7 +7,8 @@
     // get lyrics
     var lyrics = $('#lyrics').text();
     $('#jam-lyrics').text( lyrics ); 
-
+    console.log($('#song-title').val());
+    $('#spotify-id-field').val(($('#song-title').val().charAt(0).toUpperCase() + $('#song-title').val().slice(1)));
     $('#lyrics-modal').modal('hide');
   });
 

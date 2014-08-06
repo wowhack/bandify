@@ -12,9 +12,6 @@
       ul.nav.navbar-nav
 
         if (user != null)
-          li
-            a(href='/user') User info
-
           li.dropdown
             a.dropdown-toggle(href="#", data-toggle="dropdown") Jams <span class="caret"></span> 
             ul.dropdown-menu
@@ -29,9 +26,16 @@
               li
                 a(href="/tracks/") List tracks
                 a(href="/tracks/create") New track
-
         else
           li
             a(href='/jam') Jams
-          li
-            a(href='/jam/search') Search Spotify-Jams
+
+      if (user != null)
+        ul.nav.navbar-nav.navbar-right
+          li.dropdown
+            a.dropdown-toggle(href="#", data-toggle="dropdown") User <span class="caret"></span> 
+            ul.dropdown-menu
+              li
+                a(href="/user") Profile
+                a(href="/logout") Log out
+

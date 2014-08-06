@@ -3,7 +3,7 @@ var app = require('express');
 
 exports.login = function(req, res) {
   // render the page and pass in any flash data if it exists
-	res.render('login', { message: req.flash('loginMessage')});
+	res.render('', { message: req.flash('loginMessage')});
 }
 
 // Show the signup page

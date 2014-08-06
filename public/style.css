@@ -13,6 +13,7 @@
 
 p, label {
 	color: #bc451a;
+	font-size: 120%;
 }
 
 h1, h2, h3, h4, h5 {
@@ -41,7 +42,7 @@ h1, h2, h3, h4, h5 {
 	
 	font-size: 3em;
 	color: #634F46;
-	text-shadow: 6px 6px #EEBEA7;
+	text-shadow: 1px 1px #EEBEA7;
 }
 #testimonials cite:before {
 	font-size: 200%;
