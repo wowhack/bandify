@@ -14,7 +14,7 @@ block content
       h2 Active tracks
       ul.list-group#active-tracks
         for track in jam.tracks
-          li.list-group-item(data-id=track.recordingId)
+          li.list-group-item(data-sound=track.recordingId)
             = track.title
 
 
@@ -26,7 +26,7 @@ block content
         for track in tracks
           li.list-group-item
             =track.title
-            a(href="#" data-id=track.id)
+            a(href="#" data-id=track.id data-sound=track.recordingId)
               span.glyphicon.glyphicon-plus.pull-right
       a.btn.btn-primary(href="/tracks/create") Add new track
   script(src='/show-jam.js')
