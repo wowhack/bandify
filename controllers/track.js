@@ -34,7 +34,7 @@ exports.save = function(req, res) {
       console.error(err);
     }
 
-    res.redirect('/tracks/' + product._id);
+    res.redirect('/jam/' + app.get('currentJam'));
   });
 }
 

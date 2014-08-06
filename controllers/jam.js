@@ -19,7 +19,7 @@ exports.create = function(req, res) {
 //
 exports.show = function(req, res) {
   var jamID = req.params.id;
-
+  app.set('currentJam', jamID);
   async.parallel([
     function(cb) {
       Jam.findById(jamID).populate('tracks').exec(cb);
