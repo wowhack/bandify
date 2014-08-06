@@ -6,6 +6,11 @@ block content
       h1=jam.title
       p
         =jam.desc
+
+  .row
+    .col-md-8
+      textarea.form-control(rows=10, disabled=true)
+        != jam.lyrics
       p
         =jam.spotifyId
 
@@ -24,9 +29,9 @@ block content
 
       ul#available-tracks.list-group
         for track in tracks
-          li.list-group-item
+          li.list-group-item(data-sound=track.recordingId)
             =track.title
-            a(href="#" data-id=track.id data-sound=track.recordingId)
+            a(href="#" data-id=track.id)
               span.glyphicon.glyphicon-plus.pull-right
       a.btn.btn-primary(href="/tracks/create") Add new track
   script(src='/show-jam.js')
